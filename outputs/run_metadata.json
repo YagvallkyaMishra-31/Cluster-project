@@ -1,0 +1,192 @@
+{
+  "source_rows": 1000,
+  "cleaned_rows": 1000,
+  "risk_counts": {
+    "Low": 399,
+    "High": 251,
+    "Medium": 350
+  },
+  "risk_score_quantiles": {
+    "p40": 0.3655521942216768,
+    "p75": 0.5430306230200634
+  },
+  "claim_amount_iqr": {
+    "q1": 41690.0,
+    "q3": 70510.0,
+    "lower_cap": 0.0,
+    "upper_cap": 113740.0
+  },
+  "numeric_model_features": [
+    "months_as_customer",
+    "age",
+    "policy_deductable",
+    "policy_annual_premium",
+    "umbrella_limit",
+    "capital-gains",
+    "capital-loss",
+    "incident_hour_of_the_day",
+    "number_of_vehicles_involved",
+    "bodily_injuries",
+    "witnesses",
+    "auto_year",
+    "policy_bind_date_month",
+    "policy_bind_date_year",
+    "incident_date_month",
+    "incident_date_year"
+  ],
+  "categorical_model_features": [
+    "insured_sex",
+    "insured_education_level",
+    "insured_occupation",
+    "insured_hobbies",
+    "insured_relationship",
+    "collision_type",
+    "authorities_contacted",
+    "incident_state",
+    "incident_city",
+    "property_damage",
+    "police_report_available",
+    "auto_make",
+    "auto_model",
+    "claim_type",
+    "customer_region",
+    "policy_type"
+  ],
+  "feature_columns": [
+    "months_as_customer",
+    "age",
+    "policy_deductable",
+    "policy_annual_premium",
+    "umbrella_limit",
+    "capital-gains",
+    "capital-loss",
+    "incident_hour_of_the_day",
+    "number_of_vehicles_involved",
+    "bodily_injuries",
+    "witnesses",
+    "auto_year",
+    "policy_bind_date_month",
+    "policy_bind_date_year",
+    "incident_date_month",
+    "incident_date_year",
+    "insured_sex",
+    "insured_education_level",
+    "insured_occupation",
+    "insured_hobbies",
+    "insured_relationship",
+    "collision_type",
+    "authorities_contacted",
+    "incident_state",
+    "incident_city",
+    "property_damage",
+    "police_report_available",
+    "auto_make",
+    "auto_model",
+    "claim_type",
+    "customer_region",
+    "policy_type"
+  ],
+  "best_params": {
+    "maxDepth": 5,
+    "maxBins": 32,
+    "minInstancesPerNode": 5
+  },
+  "metrics": {
+    "accuracy": 0.5555555555555556,
+    "weighted_precision": 0.6581489407737311,
+    "weighted_recall": 0.5555555555555556,
+    "weighted_f1": 0.5369641317362823
+  },
+  "train_metrics": {
+    "accuracy": 0.5727923627684964,
+    "weighted_precision": 0.7453271763501019,
+    "weighted_recall": 0.5727923627684964,
+    "weighted_f1": 0.5480634052636979
+  },
+  "baseline_metrics": {
+    "accuracy": 0.5740740740740741,
+    "weighted_precision": 0.7086980341194307,
+    "weighted_recall": 0.574074074074074,
+    "weighted_f1": 0.562182199199701
+  },
+  "majority_baseline": {
+    "majority_class": "Low",
+    "accuracy": 0.4074074074074074,
+    "weighted_precision": 0.16598079561042522,
+    "weighted_recall": 0.4074074074074074,
+    "weighted_f1": 0.23586744639376214
+  },
+  "use_weights": true,
+  "per_class_metrics": [
+    {
+      "class": "Low",
+      "precision": 0.9117647058823529,
+      "recall": 0.4696969696969697,
+      "f1": 0.6200000000000001,
+      "support": 66
+    },
+    {
+      "class": "Medium",
+      "precision": 0.45132743362831856,
+      "recall": 0.8793103448275862,
+      "f1": 0.5964912280701754,
+      "support": 58
+    },
+    {
+      "class": "High",
+      "precision": 0.5333333333333333,
+      "recall": 0.21052631578947367,
+      "f1": 0.3018867924528302,
+      "support": 38
+    }
+  ],
+  "baseline_per_class_metrics": [
+    {
+      "class": "Low",
+      "precision": 1.0,
+      "recall": 0.4696969696969697,
+      "f1": 0.6391752577319588,
+      "support": 66
+    },
+    {
+      "class": "Medium",
+      "precision": 0.45614035087719296,
+      "recall": 0.896551724137931,
+      "f1": 0.6046511627906976,
+      "support": 58
+    },
+    {
+      "class": "High",
+      "precision": 0.5882352941176471,
+      "recall": 0.2631578947368421,
+      "f1": 0.3636363636363636,
+      "support": 38
+    }
+  ],
+  "overfit_gap": 0.011099273527415576,
+  "overfit_comment": "The train score is higher by 0.0111; this is a modest train/test gap.",
+  "weighted_precision_note": "Baseline weighted precision=0.7087 exceeds weighted recall=0.5741. Precision is the share of predictions that are correct; recall is the share of actual cases found. The per-class results where precision exceeds recall are: Low: precision=1.000, recall=0.470; High: precision=0.588, recall=0.263; this indicates missed actual cases (false negatives) are lowering recall more than false positives lower precision. The weighted scores are support-weighted, so interpret them with the per-class metrics and confusion matrix.",
+  "model_save_error": "Py4JJavaError: Windows Hadoop local filesystem could not find winutils.exe (HADOOP_HOME is unset or incomplete).",
+  "mappings": {
+    "claim_type": "incident_type",
+    "customer_region": "policy_state",
+    "policy_type": "policy_csl (coverage-limit tier proxy)"
+  },
+  "risk_label_rule": "risk_score = 0.5 * normalized total_claim_amount + 0.3 * normalized incident severity rank + 0.2 * fraud indicator; Low <= p40, Medium <= p75, otherwise High.",
+  "leakage_columns": [
+    "fraud_reported",
+    "incident_location",
+    "incident_severity",
+    "injury_claim",
+    "insured_zip",
+    "policy_number",
+    "property_claim",
+    "risk_level",
+    "risk_score",
+    "total_claim_amount",
+    "vehicle_claim"
+  ],
+  "run_timestamp_utc": "2026-10-30T08:49:59.536514+00:00",
+  "dataset_path": "Data/insurance_claims.csv",
+  "model_saved": false
+}

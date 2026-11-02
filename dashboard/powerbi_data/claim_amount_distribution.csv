@@ -1,0 +1,5 @@
+claim_amount_bin,count
+$30k+,811
+$20k-$30k,9
+< $10k,177
+$10k-$20k,3

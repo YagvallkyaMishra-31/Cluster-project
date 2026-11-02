@@ -1,0 +1,60 @@
+Insurance Claim Risk Analysis - actual test-set results
+
+Label index mapping: ["Low", "Medium", "High"]
+
+Best cross-validation parameters (3 folds, weighted F1): {"maxDepth": 5, "maxBins": 32, "minInstancesPerNode": 5}
+
+Majority-class baseline: {"majority_class": "Low", "accuracy": 0.4074074074074074, "weighted_precision": 0.16598079561042522, "weighted_recall": 0.4074074074074074, "weighted_f1": 0.23586744639376214}
+
+Untuned tree test: {"accuracy": 0.5740740740740741, "weighted_precision": 0.7086980341194307, "weighted_recall": 0.574074074074074, "weighted_f1": 0.562182199199701}
+
+Untuned tree train: {"accuracy": 0.5787589498806682, "weighted_precision": 0.7489901711704776, "weighted_recall": 0.5787589498806683, "weighted_f1": 0.5556767423358032}
+
+Tuned tree test: {"accuracy": 0.5555555555555556, "weighted_precision": 0.6581489407737311, "weighted_recall": 0.5555555555555556, "weighted_f1": 0.5369641317362823}
+
+Tuned tree train: {"accuracy": 0.5727923627684964, "weighted_precision": 0.7453271763501019, "weighted_recall": 0.5727923627684964, "weighted_f1": 0.5480634052636979}
+
+Baseline per-class metrics:
+ class  precision   recall       f1  support
+   Low   1.000000 0.469697 0.639175       66
+Medium   0.456140 0.896552 0.604651       58
+  High   0.588235 0.263158 0.363636       38
+
+Tuned tree train-test weighted F1 gap: 0.0111
+
+Weighted precision vs recall: Baseline weighted precision=0.7087 exceeds weighted recall=0.5741. Precision is the share of predictions that are correct; recall is the share of actual cases found. The per-class results where precision exceeds recall are: Low: precision=1.000, recall=0.470; High: precision=0.588, recall=0.263; this indicates missed actual cases (false negatives) are lowering recall more than false positives lower precision. The weighted scores are support-weighted, so interpret them with the per-class metrics and confusion matrix.
+
+Per-class metrics:
+ class  precision   recall       f1  support
+   Low   0.911765 0.469697 0.620000       66
+Medium   0.451327 0.879310 0.596491       58
+  High   0.533333 0.210526 0.301887       38
+
+Confusion matrix (rows=actual, columns=predicted):
+predicted  Low  Medium  High
+actual                      
+Low         31      34     1
+Medium       1      51     6
+High         2      28     8
+
+Top feature importances:
+                             feature  importance
+         _imputed_months_as_customer    0.760472
+                        _imputed_age    0.072345
+          _imputed_policy_deductable    0.061841
+      _imputed_policy_annual_premium    0.028380
+             _imputed_umbrella_limit    0.027624
+              _imputed_capital-gains    0.019134
+               _imputed_capital-loss    0.016252
+   _imputed_incident_hour_of_the_day    0.013951
+_imputed_number_of_vehicles_involved    0.000000
+            _imputed_bodily_injuries    0.000000
+                  _imputed_witnesses    0.000000
+                  _imputed_auto_year    0.000000
+     _imputed_policy_bind_date_month    0.000000
+      _imputed_policy_bind_date_year    0.000000
+        _imputed_incident_date_month    0.000000
+
+Selected tree parameters: {"maxDepth": 5, "maxBins": 32, "minInstancesPerNode": 5}
+
+Interpretation: train/test F1 gaps indicate the extent of possible overfitting; all figures are estimates on the held-out split.

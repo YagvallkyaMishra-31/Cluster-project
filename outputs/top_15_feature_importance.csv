@@ -1,0 +1,16 @@
+feature,importance
+_imputed_months_as_customer,0.7604720606854839
+_imputed_age,0.07234545492791165
+_imputed_policy_deductable,0.061841347412881185
+_imputed_policy_annual_premium,0.02837965097138788
+_imputed_umbrella_limit,0.027623633140768968
+_imputed_capital-gains,0.019134353555762953
+_imputed_capital-loss,0.016252040789497053
+_imputed_incident_hour_of_the_day,0.01395145851630644
+_imputed_number_of_vehicles_involved,0.0
+_imputed_bodily_injuries,0.0
+_imputed_witnesses,0.0
+_imputed_auto_year,0.0
+_imputed_policy_bind_date_month,0.0
+_imputed_policy_bind_date_year,0.0
+_imputed_incident_date_month,0.0

@@ -1,0 +1,297 @@
+
+========== TASK 1: LOAD AND INSPECT ==========
+Authentic source dataset: C:\Users\Yash Mishra\OneDrive\Desktop\Spark Project\Data\insurance_claims.csv
+Dropped empty trailing columns: ['_c39']
+
+========== TASK 1: LOAD AND INSPECT ==========
+root
+ |-- months_as_customer: string (nullable = true)
+ |-- age: string (nullable = true)
+ |-- policy_number: string (nullable = true)
+ |-- policy_bind_date: string (nullable = true)
+ |-- policy_state: string (nullable = true)
+ |-- policy_csl: string (nullable = true)
+ |-- policy_deductable: string (nullable = true)
+ |-- policy_annual_premium: string (nullable = true)
+ |-- umbrella_limit: string (nullable = true)
+ |-- insured_zip: string (nullable = true)
+ |-- insured_sex: string (nullable = true)
+ |-- insured_education_level: string (nullable = true)
+ |-- insured_occupation: string (nullable = true)
+ |-- insured_hobbies: string (nullable = true)
+ |-- insured_relationship: string (nullable = true)
+ |-- capital-gains: string (nullable = true)
+ |-- capital-loss: string (nullable = true)
+ |-- incident_date: string (nullable = true)
+ |-- incident_type: string (nullable = true)
+ |-- collision_type: string (nullable = true)
+ |-- incident_severity: string (nullable = true)
+ |-- authorities_contacted: string (nullable = true)
+ |-- incident_state: string (nullable = true)
+ |-- incident_city: string (nullable = true)
+ |-- incident_location: string (nullable = true)
+ |-- incident_hour_of_the_day: string (nullable = true)
+ |-- number_of_vehicles_involved: string (nullable = true)
+ |-- property_damage: string (nullable = true)
+ |-- bodily_injuries: string (nullable = true)
+ |-- witnesses: string (nullable = true)
+ |-- police_report_available: string (nullable = true)
+ |-- total_claim_amount: string (nullable = true)
+ |-- injury_claim: string (nullable = true)
+ |-- property_claim: string (nullable = true)
+ |-- vehicle_claim: string (nullable = true)
+ |-- auto_make: string (nullable = true)
+ |-- auto_model: string (nullable = true)
+ |-- auto_year: string (nullable = true)
+ |-- fraud_reported: string (nullable = true)
+
+Row count: 1,000
+Sample rows:
++------------------+---+-------------+----------------+------------+----------+-----------------+---------------------+--------------+-----------+-----------+-----------------------+------------------+---------------+--------------------+-------------+------------+-------------+------------------------+---------------+-----------------+---------------------+--------------+-------------+-----------------+------------------------+---------------------------+---------------+---------------+---------+-----------------------+------------------+------------+--------------+-------------+---------+----------+---------+--------------+
+|months_as_customer|age|policy_number|policy_bind_date|policy_state|policy_csl|policy_deductable|policy_annual_premium|umbrella_limit|insured_zip|insured_sex|insured_education_level|insured_occupation|insured_hobbies|insured_relationship|capital-gains|capital-loss|incident_date|incident_type           |collision_type |incident_severity|authorities_contacted|incident_state|incident_city|incident_location|incident_hour_of_the_day|number_of_vehicles_involved|property_damage|bodily_injuries|witnesses|police_report_available|total_claim_amount|injury_claim|property_claim|vehicle_claim|auto_make|auto_model|auto_year|fraud_reported|
++------------------+---+-------------+----------------+------------+----------+-----------------+---------------------+--------------+-----------+-----------+-----------------------+------------------+---------------+--------------------+-------------+------------+-------------+------------------------+---------------+-----------------+---------------------+--------------+-------------+-----------------+------------------------+---------------------------+---------------+---------------+---------+-----------------------+------------------+------------+--------------+-------------+---------+----------+---------+--------------+
+|328               |48 |521585       |2014-10-17      |OH          |250/500   |1000             |1406.91              |0             |466132     |MALE       |MD                     |craft-repair      |sleeping       |husband             |53300        |0           |2015-01-25   |Single Vehicle Collision|Side Collision |Major Damage     |Police               |SC            |Columbus     |9935 4th Drive   |5                       |1                          |YES            |1              |2        |YES                    |71610             |6510        |13020         |52080        |Saab     |92x       |2004     |Y             |
+|228               |42 |342868       |2006-06-27      |IN          |250/500   |2000             |1197.22              |5000000       |468176     |MALE       |MD                     |machine-op-inspct |reading        |other-relative      |0            |0           |2015-01-21   |Vehicle Theft           |?              |Minor Damage     |Police               |VA            |Riverwood    |6608 MLK Hwy     |8                       |1                          |?              |0              |0        |?                      |5070              |780         |780           |3510         |Mercedes |E400      |2007     |Y             |
+|134               |29 |687698       |2000-09-06      |OH          |100/300   |2000             |1413.14              |5000000       |430632     |FEMALE     |PhD                    |sales             |board-games    |own-child           |35100        |0           |2015-02-22   |Multi-vehicle Collision |Rear Collision |Minor Damage     |Police               |NY            |Columbus     |7121 Francis Lane|7                       |3                          |NO             |2              |3        |NO                     |34650             |7700        |3850          |23100        |Dodge    |RAM       |2007     |N             |
+|256               |41 |227811       |1990-05-25      |IL          |250/500   |2000             |1415.74              |6000000       |608117     |FEMALE     |PhD                    |armed-forces      |board-games    |unmarried           |48900        |-62400      |2015-01-10   |Single Vehicle Collision|Front Collision|Major Damage     |Police               |OH            |Arlington    |6956 Maple Drive |5                       |1                          |?              |1              |2        |NO                     |63400             |6340        |6340          |50720        |Chevrolet|Tahoe     |2014     |Y             |
+|228               |44 |367455       |2014-06-06      |IL          |500/1000  |1000             |1583.91              |6000000       |610706     |MALE       |Associate              |sales             |board-games    |unmarried           |66000        |-46000      |2015-02-17   |Vehicle Theft           |?              |Minor Damage     |None                 |NY            |Arlington    |3041 3rd Ave     |20                      |1                          |NO             |0              |1        |NO                     |6500              |1300        |650           |4550         |Accura   |RSX       |2009     |N             |
++------------------+---+-------------+----------------+------------+----------+-----------------+---------------------+--------------+-----------+-----------+-----------------------+------------------+---------------+--------------------+-------------+------------+-------------+------------------------+---------------+-----------------+---------------------+--------------+-------------+-----------------+------------------------+---------------------------+---------------+---------------+---------+-----------------------+------------------+------------+--------------+-------------+---------+----------+---------+--------------+
+only showing top 5 rows
+
+Describe:
++-------+------------------+----------------+----------------+----------------+------------+----------+-----------------+---------------------+------------------+-----------------+-----------+-----------------------+------------------+---------------+--------------------+------------------+-----------------+-------------+-----------------------+--------------+-----------------+---------------------+--------------+-------------+-----------------+------------------------+---------------------------+---------------+------------------+----------------+-----------------------+------------------+-----------------+-----------------+------------------+----------+-----------------+-----------------+--------------+
+|summary|months_as_customer|age             |policy_number   |policy_bind_date|policy_state|policy_csl|policy_deductable|policy_annual_premium|umbrella_limit    |insured_zip      |insured_sex|insured_education_level|insured_occupation|insured_hobbies|insured_relationship|capital-gains     |capital-loss     |incident_date|incident_type          |collision_type|incident_severity|authorities_contacted|incident_state|incident_city|incident_location|incident_hour_of_the_day|number_of_vehicles_involved|property_damage|bodily_injuries   |witnesses       |police_report_available|total_claim_amount|injury_claim     |property_claim   |vehicle_claim     |auto_make |auto_model       |auto_year        |fraud_reported|
++-------+------------------+----------------+----------------+----------------+------------+----------+-----------------+---------------------+------------------+-----------------+-----------+-----------------------+------------------+---------------+--------------------+------------------+-----------------+-------------+-----------------------+--------------+-----------------+---------------------+--------------+-------------+-----------------+------------------------+---------------------------+---------------+------------------+----------------+-----------------------+------------------+-----------------+-----------------+------------------+----------+-----------------+-----------------+--------------+
+|count  |1000              |1000            |1000            |1000            |1000        |1000      |1000             |1000                 |1000              |1000             |1000       |1000                   |1000              |1000           |1000                |1000              |1000             |1000         |1000                   |1000          |1000             |1000                 |1000          |1000         |1000             |1000                    |1000                       |1000           |1000              |1000            |1000                   |1000              |1000             |1000             |1000              |1000      |1000             |1000             |1000          |
+|mean   |203.954           |38.948          |546238.648      |NULL            |NULL        |NULL      |1136.0           |1256.4061500000018   |1101000.0         |501214.488       |NULL       |NULL                   |NULL              |NULL           |NULL                |25126.1           |-26793.7         |NULL         |NULL                   |NULL          |NULL             |NULL                 |NULL          |NULL         |NULL             |11.644                  |1.839                      |NULL           |0.992             |1.487           |NULL                   |52761.94          |7433.42          |7399.57          |37928.95          |NULL      |94.03846153846153|2005.103         |NULL          |
+|stddev |115.11317442815543|9.14028669358029|257063.005275585|NULL            |NULL        |NULL      |611.8646732557602|244.16739496140715   |2297406.5981182083|71701.61094135506|NULL       |NULL                   |NULL              |NULL           |NULL                |27872.187708137248|28104.09668643632|NULL         |NULL                   |NULL          |NULL             |NULL                 |NULL          |NULL         |NULL             |6.951372928104604       |1.018880325218382          |NULL           |0.8201271905068188|1.11133526267552|NULL                   |26401.533190161328|4880.951853337071|4824.726178530526|18886.252893198423|NULL      |1.009009190994467|6.015860834625485|NULL          |
+|min    |0                 |19              |100804          |1990-01-08      |IL          |100/300   |1000             |1000.06              |-1000000          |430104           |FEMALE     |Associate              |adm-clerical      |base-jumping   |husband             |0                 |-10600           |2015-01-01   |Multi-vehicle Collision|?             |Major Damage     |Ambulance            |NC            |Arlington    |1012 5th Lane    |0                       |1                          |?              |0                 |0               |?                      |100               |0                |0                |12720             |Accura    |3 Series         |1995             |N             |
+|max    |99                |64              |999435          |2015-02-22      |OH          |500/1000  |500              |999.52               |9000000           |620962           |MALE       |PhD                    |transport-moving  |yachting       |wife                |98800             |0                |2015-03-01   |Vehicle Theft          |Side Collision|Trivial Damage   |Police               |WV            |Springfield  |9988 Rock Ridge  |9                       |4                          |YES            |2                 |3               |YES                    |99990             |9980             |9980             |8300              |Volkswagen|X6               |2015             |Y             |
++-------+------------------+----------------+----------------+----------------+------------+----------+-----------------+---------------------+------------------+-----------------+-----------+-----------------------+------------------+---------------+--------------------+------------------+-----------------+-------------+-----------------------+--------------+-----------------+---------------------+--------------+-------------+-----------------+------------------------+---------------------------+---------------+------------------+----------------+-----------------------+------------------+-----------------+-----------------+------------------+----------+-----------------+-----------------+--------------+
+
+Question-mark value counts:
+  collision_type
++---------------+-----+
+|collision_type |count|
++---------------+-----+
+|Rear Collision |292  |
+|Side Collision |276  |
+|Front Collision|254  |
+|?              |178  |
++---------------+-----+
+
+  property_damage
++---------------+-----+
+|property_damage|count|
++---------------+-----+
+|?              |360  |
+|NO             |338  |
+|YES            |302  |
++---------------+-----+
+
+  police_report_available
++-----------------------+-----+
+|police_report_available|count|
++-----------------------+-----+
+|?                      |343  |
+|NO                     |343  |
+|YES                    |314  |
++-----------------------+-----+
+
+
+========== TASK 2: CLEAN, NORMALIZE, AND LABEL ==========
+
+========== TASK 2: CLEAN, NORMALIZE, AND LABEL ==========
+Missing values before cleaning (including literal question marks):
++---------------------------+-------------+---------------+
+|column                     |missing_count|missing_percent|
++---------------------------+-------------+---------------+
+|months_as_customer         |0            |0.0            |
+|age                        |0            |0.0            |
+|policy_number              |0            |0.0            |
+|policy_bind_date           |0            |0.0            |
+|policy_state               |0            |0.0            |
+|policy_csl                 |0            |0.0            |
+|policy_deductable          |0            |0.0            |
+|policy_annual_premium      |0            |0.0            |
+|umbrella_limit             |0            |0.0            |
+|insured_zip                |0            |0.0            |
+|insured_sex                |0            |0.0            |
+|insured_education_level    |0            |0.0            |
+|insured_occupation         |0            |0.0            |
+|insured_hobbies            |0            |0.0            |
+|insured_relationship       |0            |0.0            |
+|capital-gains              |0            |0.0            |
+|capital-loss               |0            |0.0            |
+|incident_date              |0            |0.0            |
+|incident_type              |0            |0.0            |
+|collision_type             |178          |17.8           |
+|incident_severity          |0            |0.0            |
+|authorities_contacted      |0            |0.0            |
+|incident_state             |0            |0.0            |
+|incident_city              |0            |0.0            |
+|incident_location          |0            |0.0            |
+|incident_hour_of_the_day   |0            |0.0            |
+|number_of_vehicles_involved|0            |0.0            |
+|property_damage            |360          |36.0           |
+|bodily_injuries            |0            |0.0            |
+|witnesses                  |0            |0.0            |
+|police_report_available    |343          |34.3           |
+|total_claim_amount         |0            |0.0            |
+|injury_claim               |0            |0.0            |
+|property_claim             |0            |0.0            |
+|vehicle_claim              |0            |0.0            |
+|auto_make                  |0            |0.0            |
+|auto_model                 |0            |0.0            |
+|auto_year                  |0            |0.0            |
+|fraud_reported             |0            |0.0            |
++---------------------------+-------------+---------------+
+
+Claim amount IQR cap: Q1=41690.00, Q3=70510.00, lower=0.00, upper=113740.00.
+Missing values after cleaning:
++---------------------------+-------------+---------------+
+|column                     |missing_count|missing_percent|
++---------------------------+-------------+---------------+
+|months_as_customer         |0            |0.0            |
+|age                        |0            |0.0            |
+|policy_number              |0            |0.0            |
+|policy_bind_date           |0            |0.0            |
+|policy_state               |0            |0.0            |
+|policy_csl                 |0            |0.0            |
+|policy_deductable          |0            |0.0            |
+|policy_annual_premium      |0            |0.0            |
+|umbrella_limit             |0            |0.0            |
+|insured_zip                |0            |0.0            |
+|insured_sex                |0            |0.0            |
+|insured_education_level    |0            |0.0            |
+|insured_occupation         |0            |0.0            |
+|insured_hobbies            |0            |0.0            |
+|insured_relationship       |0            |0.0            |
+|capital-gains              |0            |0.0            |
+|capital-loss               |0            |0.0            |
+|incident_date              |0            |0.0            |
+|incident_type              |0            |0.0            |
+|collision_type             |0            |0.0            |
+|incident_severity          |0            |0.0            |
+|authorities_contacted      |0            |0.0            |
+|incident_state             |0            |0.0            |
+|incident_city              |0            |0.0            |
+|incident_location          |0            |0.0            |
+|incident_hour_of_the_day   |0            |0.0            |
+|number_of_vehicles_involved|0            |0.0            |
+|property_damage            |0            |0.0            |
+|bodily_injuries            |0            |0.0            |
+|witnesses                  |0            |0.0            |
+|police_report_available    |0            |0.0            |
+|total_claim_amount         |0            |0.0            |
+|injury_claim               |0            |0.0            |
+|property_claim             |0            |0.0            |
+|vehicle_claim              |0            |0.0            |
+|auto_make                  |0            |0.0            |
+|auto_model                 |0            |0.0            |
+|auto_year                  |0            |0.0            |
+|fraud_reported             |0            |0.0            |
+|risk_score                 |0            |0.0            |
+|risk_level                 |0            |0.0            |
+|claim_type                 |0            |0.0            |
+|customer_region            |0            |0.0            |
+|policy_type                |0            |0.0            |
+|policy_bind_date_month     |0            |0.0            |
+|policy_bind_date_year      |0            |0.0            |
+|incident_date_month        |0            |0.0            |
+|incident_date_year         |0            |0.0            |
++---------------------------+-------------+---------------+
+
+Risk distribution:
++----------+-----+
+|risk_level|count|
++----------+-----+
+|      High|  251|
+|       Low|  399|
+|    Medium|  350|
++----------+-----+
+
+Claim amount before/after IQR capping (cleaned distribution):
++-------+------------------+
+|summary|total_claim_amount|
++-------+------------------+
+|  count|              1000|
+|   mean|          52760.76|
+| stddev| 26398.77851965371|
+|    min|             100.0|
+|    max|          113740.0|
++-------+------------------+
+
+
+========== TASK 3: ENCODE FEATURES ==========
+
+========== TASK 4: TRAIN AND TUNE DECISION TREE ==========
+Leakage exclusions: claim amounts, severity, fraud, risk_score, risk_level, and ID-like fields.
+Numeric feature count: 16
+Categorical feature count: 16
+Training label distribution:
++----------+-----+
+|risk_level|count|
++----------+-----+
+|      High|  213|
+|       Low|  333|
+|    Medium|  292|
++----------+-----+
+
+Test label distribution:
++----------+-----+
+|risk_level|count|
++----------+-----+
+|      High|   38|
+|       Low|   66|
+|    Medium|   58|
++----------+-----+
+
+Untuned tree test metrics: {'accuracy': 0.5740740740740741, 'weighted_precision': 0.7086980341194307, 'weighted_recall': 0.574074074074074, 'weighted_f1': 0.562182199199701}
+Stored label mapping (index order): ['Low', 'Medium', 'High']
+WARNING: model persistence/reload failed; other outputs will still be generated. Py4JJavaError: Windows Hadoop local filesystem could not find winutils.exe (HADOOP_HOME is unset or incomplete).
+
+========== TASK 5: TEST-SET EVALUATION ==========
+Majority-class baseline: {'majority_class': 'Low', 'accuracy': 0.4074074074074074, 'weighted_precision': 0.16598079561042522, 'weighted_recall': 0.4074074074074074, 'weighted_f1': 0.23586744639376214}
+Tuned tree test metrics: {'accuracy': 0.5555555555555556, 'weighted_precision': 0.6581489407737311, 'weighted_recall': 0.5555555555555556, 'weighted_f1': 0.5369641317362823}
+Tuned tree train F1=0.5481; test F1=0.5370
+Best cross-validation parameters: {'maxDepth': 5, 'maxBins': 32, 'minInstancesPerNode': 5}
+Weighted precision note: Baseline weighted precision=0.7087 exceeds weighted recall=0.5741. Precision is the share of predictions that are correct; recall is the share of actual cases found. The per-class results where precision exceeds recall are: Low: precision=1.000, recall=0.470; High: precision=0.588, recall=0.263; this indicates missed actual cases (false negatives) are lowering recall more than false positives lower precision. The weighted scores are support-weighted, so interpret them with the per-class metrics and confusion matrix.
+Confusion matrix (rows=actual, columns=predicted):
+predicted  Low  Medium  High
+actual                      
+Low         31      34     1
+Medium       1      51     6
+High         2      28     8
+Per-class metrics:
+ class  precision   recall       f1  support
+   Low   0.911765 0.469697 0.620000       66
+Medium   0.451327 0.879310 0.596491       58
+  High   0.533333 0.210526 0.301887       38
+Top feature importances:
+                             feature  importance
+         _imputed_months_as_customer    0.760472
+                        _imputed_age    0.072345
+          _imputed_policy_deductable    0.061841
+      _imputed_policy_annual_premium    0.028380
+             _imputed_umbrella_limit    0.027624
+              _imputed_capital-gains    0.019134
+               _imputed_capital-loss    0.016252
+   _imputed_incident_hour_of_the_day    0.013951
+_imputed_number_of_vehicles_involved    0.000000
+            _imputed_bodily_injuries    0.000000
+                  _imputed_witnesses    0.000000
+                  _imputed_auto_year    0.000000
+     _imputed_policy_bind_date_month    0.000000
+      _imputed_policy_bind_date_year    0.000000
+        _imputed_incident_date_month    0.000000
+
+========== TASK 6: VISUALIZE RISK DISTRIBUTIONS ==========
+
+========== RUN COMPLETE ==========
+Cleaned records: 1,000
+Risk counts: {'Low': 399, 'High': 251, 'Medium': 350}
+Best CV parameters: {'maxDepth': 5, 'maxBins': 32, 'minInstancesPerNode': 5}
+Tuned held-out metrics: {'accuracy': 0.5555555555555556, 'weighted_precision': 0.6581489407737311, 'weighted_recall': 0.5555555555555556, 'weighted_f1': 0.5369641317362823}
+Model saved: False
+Results, reports, and dashboard written under: C:\Users\Yash Mishra\OneDrive\Desktop\Spark Project

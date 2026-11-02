@@ -1,0 +1,49 @@
+name,type,description,missing_percent
+months_as_customer,double,Months as customer.,0.0
+age,double,Age.,0.0
+policy_number,double,Policy identifier; excluded from model features.,0.0
+policy_bind_date,string,Policy bind date.,0.0
+policy_state,string,Customer region proxy (source policy_state).,0.0
+policy_csl,string,Coverage-limit tier proxy for policy type; the source has no policy-type field.,0.0
+policy_deductable,double,Policy deductable.,0.0
+policy_annual_premium,double,Policy annual premium.,0.0
+umbrella_limit,double,Umbrella limit.,0.0
+insured_zip,double,Insured postal code; excluded from model features.,0.0
+insured_sex,string,Insured sex.,0.0
+insured_education_level,string,Insured education level.,0.0
+insured_occupation,string,Insured occupation.,0.0
+insured_hobbies,string,Insured hobbies.,0.0
+insured_relationship,string,Insured relationship.,0.0
+capital-gains,double,Capital-gains.,0.0
+capital-loss,double,Capital-loss.,0.0
+incident_date,string,Incident date.,0.0
+incident_type,string,Claim type (source incident_type).,0.0
+collision_type,string,Collision type.,0.0
+incident_severity,string,Incident severity.,0.0
+authorities_contacted,string,Authorities contacted.,0.0
+incident_state,string,Incident state.,0.0
+incident_city,string,Incident city.,0.0
+incident_location,string,Incident address; excluded from model features.,0.0
+incident_hour_of_the_day,double,Incident hour of the day.,0.0
+number_of_vehicles_involved,double,Number of vehicles involved.,0.0
+property_damage,string,Property damage.,0.0
+bodily_injuries,double,Bodily injuries.,0.0
+witnesses,double,Witnesses.,0.0
+police_report_available,string,Police report available.,0.0
+total_claim_amount,double,"Total claim amount; used for the derived target, EDA, and display only.",0.0
+injury_claim,double,Injury claim.,0.0
+property_claim,double,Property claim.,0.0
+vehicle_claim,double,Vehicle claim.,0.0
+auto_make,string,Auto make.,0.0
+auto_model,string,Auto model.,0.0
+auto_year,double,Auto year.,0.0
+fraud_reported,string,Fraud reported.,0.0
+risk_score,double,Risk score.,0.0
+risk_level,string,"Derived target: Low, Medium, or High.",0.0
+claim_type,string,Mapped from incident_type.,0.0
+customer_region,string,Mapped from policy_state.,0.0
+policy_type,string,Mapped from policy_csl (coverage-limit tier proxy).,0.0
+policy_bind_date_month,double,Policy bind date month.,0.0
+policy_bind_date_year,double,Policy bind date year.,0.0
+incident_date_month,double,Incident date month.,0.0
+incident_date_year,double,Incident date year.,0.0
